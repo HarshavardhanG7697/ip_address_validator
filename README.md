@@ -24,4 +24,3 @@
 - the number of ":" must be between 2 and 7
 - each segment can be any hexadecimal value between 0 and FFFF
 - segments with only 0s can be represented as "::"
-
