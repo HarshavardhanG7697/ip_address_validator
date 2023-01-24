@@ -1,22 +1,18 @@
 #!/Users/hv/Documents/GitHub/ip_addr_validator/.venv/bin/python3
-
 import logging
 
 logging.basicConfig(format='%(asctime)s-[%(levelname)s]-%(message)s', 
-datefmt='%H:%M:%S %d-%m-%Y ',
+datefmt='%H:%M:%S %d-%m-%Y',
 level=logging.INFO
 )
 
 HEXADECIMALS = "0123456789abcdefABCDEF"
 
-ip_address = "ffff:0:0:0:0:0:0:FFFF"
-# ip_address = ":"
-
 # Function to validate IPv4 addresses
 def is_valid_ipv4(given_ip_addrr) -> bool:
-    logging.debug("validating if the ip address is ipv4")
+    logging.info("validating if the ip address is ipv4")
     split_ip_address = given_ip_addrr.split(".")
-    logging.debug(split_ip_address)
+    logging.debug(f"split: {split_ip_address}")
     if len(split_ip_address) == 4:
         logging.debug("the given ip address has 4 octets as expected.")
         if all([int(octet) <= 255 for octet in split_ip_address]):
@@ -32,11 +28,11 @@ def is_valid_ipv4(given_ip_addrr) -> bool:
         logging.warning(f"ip address {given_ip_addrr} is invalid.")
         return False
 
-
+# Function to validate IPv6 address
 def is_valid_ipv6(given_ip_addrr) -> bool:
-    logging.debug("validating if the ip address is ipv6")
+    logging.info("validating if the ip address is ipv6")
     split_ip_address = given_ip_addrr.split(":")
-    logging.debug(split_ip_address)
+    logging.debug(f"split: {split_ip_address}") 
     if len(split_ip_address) > 2 and len(split_ip_address) <= 8:
         logging.debug("ip address has more than 3 and less than 8 segments.")
         logging.debug([segment[i] for segment in split_ip_address for i in range(len(segment))])
@@ -61,4 +57,23 @@ def is_valid_ipv6(given_ip_addrr) -> bool:
         return False
 
 
+ip_address = input("Enter the IP address you would like to vaidate: ")
 
+try:
+    try:
+        if "." in ip_address:
+            if is_valid_ipv4(ip_address):
+                logging.info("valid IPv4 address")
+        else:
+            raise ValueError("ip address is not a ipv4.")
+    except ValueError as e:
+        logging.error(e)
+        if ":" in ip_address:
+            if is_valid_ipv6(ip_address):
+                logging.info("valid IPv4 address")
+        else:
+            logging.error("ip address is not a ipv6.")
+            raise TypeError("input is not a valid string")
+except TypeError as e:
+    logging.warning(e)
+    logging.critical("Make sure that the IP address entered is a string.")
