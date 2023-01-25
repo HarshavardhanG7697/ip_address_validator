@@ -38,7 +38,12 @@ $ pip3 install virtualenv
 
 - Create a virtual environment
 ```bash
-$ python -m venv .venv
+$ python3 -m venv .venv
+```
+
+- Activate the virtual environment
+```bash
+$ source .venv/bin/activate
 ```
 
 - Install the required packages
