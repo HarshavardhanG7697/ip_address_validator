@@ -1,6 +1,7 @@
 import unittest
 import ip_addr_validator
 
+
 class TestIpAddrValidator(unittest.TestCase):
     def test_valid_ipv4(self):
         self.assertTrue(ip_addr_validator.is_valid_ipv4("0.0.0.0"))

@@ -24,3 +24,31 @@
 - the number of ":" must be between 2 and 7
 - each segment can be any hexadecimal value between 0 and FFFF
 - segments with only 0s can be represented as "::"
+
+### Instructions to use:
+- Clone the repository:
+```bash
+$ git clone https://github.com/HarshavardhanG7697/ip_address_validator.git
+```
+
+- Install virtualenv
+```bash
+$ pip3 install virtualenv
+```
+
+- Create a virtual environment
+```bash
+$ python -m venv .venv
+```
+
+- Install the required packages
+```bash
+$ pip3 install -r requirements.txt
+```
+
+- Run the ip_addr_validator.py
+```bash
+$ python3 ip_addr_validator.py
+or
+./ip_addr_validator.py
+```

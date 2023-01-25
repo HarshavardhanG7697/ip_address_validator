@@ -1,4 +1,4 @@
-#!/Users/hv/Documents/GitHub/ip_addr_validator/.venv/bin/python3
+#!.venv/bin/python3
 import logging
 
 logging.basicConfig(
@@ -109,7 +109,7 @@ try:
         logging.error(e)
         if ":" in ip_address:
             if is_valid_ipv6(ip_address):
-                logging.info("valid IPv4 address")
+                logging.info("valid IPv6 address")
         else:
             logging.error("ip address is not a ipv6.")
             raise TypeError("input is not a valid string")
